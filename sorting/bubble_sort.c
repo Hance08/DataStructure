@@ -19,7 +19,7 @@ int arr[] = {2, 3, 9, 17, 5, 8, 2, 33, 178};
 int main()
 {
     int len_of_arr = sizeof(arr) / sizeof(arr[0]);
-    printf("The length of this array : %d\n", len_of_arr);
+    // printf("The length of this array : %d\n", len_of_arr);
 
     for (int i = 0; i < len_of_arr; i++)
     {
@@ -32,11 +32,29 @@ int main()
                 arr[j] = arr[j] ^ arr[j + 1];
             };
         }
+        printf("Step %d : ", i);
+        printf("[");
+        for (int t = 0; t < len_of_arr; t++)
+        {
+            if (t > 0)
+            {
+                printf(",");
+            }
+            printf("%d", arr[t]);
+        }
+        printf("] \n");
     }
 
+    printf("Final result : ");
+    printf("[");
     for (int i = 0; i < len_of_arr; i++)
     {
-        printf("%d,", arr[i]);
+        if (i > 0)
+        {
+            printf(",");
+        }
+        printf("%d", arr[i]);
     }
+    printf("]");
     return 0;
 }

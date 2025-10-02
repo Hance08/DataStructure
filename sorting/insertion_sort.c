@@ -4,22 +4,41 @@ int arr_len = sizeof(arr) / sizeof(arr[0]);
 
 int main()
 {
-    for (int i = 1; i < arr_len; i++) // Start with index 1 element
+    for (int i = 1; i < arr_len; i++)
     {
-        int current = arr[i];              // current index element (initial 1 which is 3)
-        int j = i - 1;                     // The PREVIOUS element (which is 2, which is the sorted part)
-        while (j >= 0 && arr[j] > current) // The condition about should insert or not (which is 2 > 3 false, NOT insert)
+        int current = arr[i];
+        int previous_index = i - 1;
+
+        while (previous_index >= 0 && arr[previous_index] > current)
         {
-            arr[j + 1] = arr[j]; // The previous element shift right by one (Example: 2, 3, 9, 17, 5... -> 2, 3, 9, 17, 17)
-            j--; // Go to next sorted element (which is 9)
+            arr[previous_index + 1] = arr[previous_index];
+            previous_index--;
         }
-        arr[j + 1] = current; // The INSERT happen here !!
+        arr[previous_index + 1] = current;
+        printf("Step %d : ", i);
+        printf("[");
+        for (int t = 0; t < arr_len; t++)
+        {
+            if (t > 0)
+            {
+                printf(",");
+            }
+            printf("%d", arr[t]);
+        }
+        printf("] \n");
     }
 
+    printf("Final result : ");
+    printf("[");
     for (int i = 0; i < arr_len; i++)
     {
-        printf("%d,", arr[i]);
+        if (i > 0)
+        {
+            printf(",");
+        }
+        printf("%d", arr[i]);
     }
+    printf("]");
 
     return 0;
 }
