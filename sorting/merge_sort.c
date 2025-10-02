@@ -25,14 +25,6 @@ void mergeSort(int arr[], int left, int right) // Example left = 0, right = 2 [3
     if (left < right)
     {
         int mid = left + (right - left) / 2;
-        for (int i = 0; i < mid; i++)
-        {
-            printf("%d ", arr[i]);
-        }
-        for (int i = mid + 1; i < right; i++)
-        {
-            printf("%d ", arr[i]);
-        }
 
         mergeSort(arr, left, mid);      // Divide to left array
         mergeSort(arr, mid + 1, right); // Divide to right array
